@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Interface\CRUDInterface;
+use App\Interfaces\CRUDInterface;
 use App\Models\Estudante;
 
 class EstudanteRepository implements CRUDInterface

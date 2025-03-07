@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Services\EstudanteService;
-use App\Http\Controllers\EstudanteUpdateRequest;
+
 use App\Http\Requests\EstudanteStoreRequest;
+use App\Http\Requests\EstudanteUpdateRequest;
 use Illuminate\Http\Request;
 
 class EstudanteController extends Controller
@@ -40,7 +41,7 @@ class EstudanteController extends Controller
         return back()->with('error', 'falha ao salvar');
     }
 
-    public function show($id)
+    public function show(string $id)
     {
         $infoForView = $this -> estudanteService -> getInfoForShowView($id);
 
@@ -49,7 +50,7 @@ class EstudanteController extends Controller
 
     public function edit(string $id)
     {
-        $infoForView = $this -> estudanteService -> getInfoForEditView($id);
+        $infoForView = $this->estudanteService->getInfoForEditView($id);
 
         return view('estudante.edit', $infoForView);
     }

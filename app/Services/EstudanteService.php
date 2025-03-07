@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use App\Repositories\EstudanteRepository;
-use App\Models\Estudante;
-use App\Models\Pessoa;
 use App\Repositories\PessoaRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -99,7 +97,7 @@ class EstudanteService
             'turma' => $data['turma'],
         ];
 
-        return DB::transaction(function () use ($pessoaData, $estudante){
+        return DB::transaction(function () use ($pessoaData, $estudanteData, $estudante){
             $this->pessoaRepository->update($pessoaData, $estudante->pessoa_id);
             $this->estudanteRepository->update($estudanteData, $estudante->id);
 
@@ -112,7 +110,7 @@ class EstudanteService
         $estudante = $this->estudanteRepository->findOrFail($id);
 
         return DB::transaction(function () use ($estudante){
-            $this->estudanteRepository -> delete($pessoaData, $estudante->pessoa_id);
+            $this->estudanteRepository -> delete($estudante->id);
             $this->estudanteRepository -> delete($estudante->pessoa_id);
 
             return true;

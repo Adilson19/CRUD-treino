@@ -6,7 +6,7 @@ use App\Interfaces\CRUDInterface;
 use App\Models\Estudante;
 use Illuminate\Database\Eloquent\Model;
 
-class EstudanteRepository implements CRUDInterface
+class PessoaRepository implements CRUDInterface
 {
     protected $model;
     //  Implementando as interfaces em models que faz a conexao direta com o banco de dados
