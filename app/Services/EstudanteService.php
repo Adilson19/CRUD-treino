@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\EstudanteRepository;
+use App\Models\Estudante;
+use App\Models\Pessoa;
 use App\Repositories\PessoaRepository;
 use Illuminate\Support\Facades\DB;
 

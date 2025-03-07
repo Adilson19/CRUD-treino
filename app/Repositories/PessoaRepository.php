@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\CRUDInterface;
 use App\Models\Estudante;
+use Illuminate\Database\Eloquent\Model;
 
 class EstudanteRepository implements CRUDInterface
 {

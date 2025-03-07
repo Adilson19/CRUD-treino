@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::resourse('estudantes', EstudanteController::class);
+Route::resourse('estudantes', EstudanteController::class);

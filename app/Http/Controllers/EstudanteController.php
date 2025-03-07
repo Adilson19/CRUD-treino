@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\EstudanteService;
+use App\Http\Controllers\EstudanteUpdateRequest;
 use App\Http\Requests\EstudanteStoreRequest;
 use Illuminate\Http\Request;
 
