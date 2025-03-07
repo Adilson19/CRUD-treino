@@ -97,7 +97,7 @@ class EstudanteService
             'turma' => $data['turma'],
         ];
 
-        return DB::transaction(function () use ($pessoaData, $estuante){
+        return DB::transaction(function () use ($pessoaData, $estudante){
             $this->pessoaRepository->update($pessoaData, $estudante->pessoa_id);
             $this->estudanteRepository->update($estudanteData, $estudante->id);
 
