@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
 <a href="/estudantes/create">Novo Estudante</a>
     <table border="1" width="50%"
