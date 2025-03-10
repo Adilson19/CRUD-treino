@@ -8,35 +8,37 @@ use Illuminate\Support\Facades\DB;
 
 class EstudanteService
 {
+
     protected $estudanteRepository;
     protected $pessoaRepository;
 
-    public function  __construct(
+    public function __construct(
         EstudanteRepository $estudanteRepository,
         PessoaRepository $pessoaRepository
-    ){
+    ) {
         $this->estudanteRepository = $estudanteRepository;
         $this->pessoaRepository = $pessoaRepository;
     }
+
 
     public function getInfoForIndexView()
     {
         $estudantes = $this->estudanteRepository->findAll();
 
-        $title = 'Estudante';
-        $menu = 'Estudante';
-        $submenu = 'Listar';
-        $type = 'estudantes';
+        $title = "Estudante";
+        $menu = "Estudante";
+        $submenu = "Listar";
+        $type = "estudantes";
 
         return compact('title', 'menu', 'submenu', 'type', 'estudantes');
     }
 
     public function getInfoForCreateView()
     {
-        $title = 'Estudante';
-        $menu = 'Estudante';
-        $submenu = 'Novo';
-        $type = 'estudantes';
+        $title = "Estudante";
+        $menu = "Estudante";
+        $submenu = "Novo";
+        $type = "estudantes";
 
         return compact('title', 'menu', 'submenu', 'type');
     }
@@ -45,24 +47,25 @@ class EstudanteService
     {
         $estudante = $this -> estudanteRepository -> findOrFail($id);
 
-        $title = 'Estudante';
-        $menu = 'Estudante';
-        $submenu = 'Detalhes';
-        $type = 'estudantes';
+        $title = "Estudante";
+        $menu = "Estudante";
+        $submenu = "Detalhes";
+        $type = "estudantes";
 
         return compact('title', 'menu', 'submenu', 'type', 'estudante');
     }
 
-    public function getInforForEditView(string $id)
+    public function getInfoForEditView(string $id)
     {
         $estudante = $this -> estudanteRepository -> findOrFail($id);
+        
 
-        $title = 'Estudante';
-        $menu = 'Estudante';
-        $submenu = 'Editar';
-        $type = 'estudantes';
+        $title = "Estudante";
+        $menu = "Estudante";
+        $submenu = "Editar";
+        $type = "estudantes";
 
-        return  compact('title', 'menu', 'submenu', 'type', 'estudante');
+        return compact('title', 'menu', 'submenu', 'type', 'estudante');
     }
 
     public function store(array $data)
@@ -77,7 +80,7 @@ class EstudanteService
             'turma' => $data['turma'],
         ];
 
-        return DB::transaction(function () use ($pessoaData, $estudanteData){
+        return DB::transaction(function () use ($pessoaData, $estudanteData) {
             $pessoa = $this->pessoaRepository->create($pessoaData);
             $estudanteData['pessoa_id'] = $pessoa->id;
             return $this->estudanteRepository->create($estudanteData);
@@ -86,7 +89,7 @@ class EstudanteService
 
     public function update(array $data, string $id)
     {
-        $estudante = $this -> estudanteRepository -> findOrFail($id);
+        $estudante = $this->estudanteRepository->findOrFail($id);
 
         $pessoaData = [
             'nome' => $data['nome'],
@@ -97,7 +100,7 @@ class EstudanteService
             'turma' => $data['turma'],
         ];
 
-        return DB::transaction(function () use ($pessoaData, $estudanteData, $estudante){
+        return DB::transaction(function () use ($pessoaData, $estudanteData, $estudante) {
             $this->pessoaRepository->update($pessoaData, $estudante->pessoa_id);
             $this->estudanteRepository->update($estudanteData, $estudante->id);
 
@@ -109,9 +112,9 @@ class EstudanteService
     {
         $estudante = $this->estudanteRepository->findOrFail($id);
 
-        return DB::transaction(function () use ($estudante){
-            $this->estudanteRepository -> delete($estudante->id);
-            $this->estudanteRepository -> delete($estudante->pessoa_id);
+        return DB::transaction(function () use ($estudante) {
+            $this->estudanteRepository->delete($estudante->id);
+            $this->pessoaRepository->delete($estudante->pessoa_id);
 
             return true;
         });
