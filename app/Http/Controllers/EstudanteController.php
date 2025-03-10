@@ -50,7 +50,8 @@ class EstudanteController extends Controller
 
     public function edit(string $id)
     {
-        $infoForView = $this->estudanteService->getInfoForEditView($id);
+        $infoForView = $this->estudanteService->getInfoForShowView($id);
+        
 
         return view('estudante.edit', $infoForView);
     }
