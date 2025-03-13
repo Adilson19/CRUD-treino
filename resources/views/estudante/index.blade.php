@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<a href="/estudantes/create">Novo Estudante</a>
+<a href="/estudantes/create" style="
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+">Novo Estudante</a>
     <table border="1" width="50%" 
         style="
             color:black; 

@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <a href="/estudantes">Lista Estudantes</a>
+    <a href="/estudantes" style="
+        text-align: center;
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+    ">Lista Estudantes</a>
     @if (session('success'))
         <p>{{ session('success') }}</p>
     @endif
@@ -9,7 +14,13 @@
         <p>{{ session('error') }}</p>
     @endif
 
-    <form action="/estudantes" method="post">
+    <form action="/estudantes" method="post"
+        style="
+            background-color: #000;
+            color:#FFF;
+            border: 1px solid grey;
+            width: 15%;
+        ">
         @method('POST')
         @csrf
 
@@ -28,8 +39,10 @@
             <p>{{$errors->first('turma')}}</p>
         @endif
         <br/>
-
-        <button type="submit">Salvar</button>
+        <p style="
+            text-align: center;
+            marigin-right: 40px;
+        "><button type="submit">Salvar</button></p>
 
     </form>
 @endsection
