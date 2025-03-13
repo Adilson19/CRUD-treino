@@ -11,7 +11,6 @@
             color:black; 
             background-color: grey;
             text-align: center;
-
         ">
         <thead>
             <tr>
