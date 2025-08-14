@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EstudanteController;
+use App\Http\Controllers\AlunosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('estudantes', EstudanteController::class);
+Route::resource('alunos', AlunosController::class);
